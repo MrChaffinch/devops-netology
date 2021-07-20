@@ -11,3 +11,4 @@ override.tf.json - будет проигнорирован файл override.tf.
 *_override.tf.json - будет проигнорированы все файлы которые заканчиваются на _override.tf.json
 .terraformrc - будет проигнорирован файл .terraformrc
 terraform.rc - будет проигнорирован файл terraform.rc
+new line
