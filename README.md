@@ -2,18 +2,19 @@ Homework 3.6
 
 #1
 
-![#1](./screenshots/Screenshot 2021-09-09 at 17.09.29.png?raw=true "#1")
+![#1](https://github.com/MrChaffinch/devops-netology/blob/main/screenshots/Screenshot%202021-09-09%20at%2017.09.29.png "#1")
 
 301 - происходит редирект
 
 #2
 
-![#2](./screenshots/Screenshot 2021-09-09 at 17.18.26.png?raw=true "#2")
+![#2](https://github.com/MrChaffinch/devops-netology/blob/main/screenshots/Screenshot%202021-09-09%20at%2017.18.26.png "#2")
 
-![#3](./screenshots/Screenshot 2021-09-09 at 18.16.16.png?raw=true "#3")
+![#3](https://github.com/MrChaffinch/devops-netology/blob/main/screenshots/Screenshot%202021-09-09%20at%2018.16.16.png "#3")
 
 #3
-![#4](./screenshots/Screenshot 2021-09-09 at 17.26.22.png?raw=true "#4")
+
+89.179.240.*
 
 #4 
 origin:         AS8402 
@@ -21,11 +22,11 @@ role:           CORBINA TELECOM Network Operations
 
 #5
 
-![#5](./screenshots/Screenshot 2021-09-09 at 17.56.32.png?raw=true "#5")
+![#5](https://github.com/MrChaffinch/devops-netology/blob/main/screenshots/Screenshot%202021-09-09%20at%2017.56.32.png "#5")
 
 #6
 
-![#6](./screenshots/Screenshot 2021-09-09 at 18.17.50.png?raw=true "#6")
+![#6](https://github.com/MrChaffinch/devops-netology/blob/main/screenshots/Screenshot%202021-09-09%20at%2018.17.50.png "#6")
 
 Хуже всего на участе AS15169
 
