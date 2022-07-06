@@ -8,10 +8,6 @@
 - Kibana
 - Filebeat
 
-Схема свяхи между приложениями:
-
-![screen](screens/img.png)
-
 ## Какие у него есть теги
 
 - elastic
