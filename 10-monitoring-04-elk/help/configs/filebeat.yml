@@ -1,0 +1,43 @@
+filebeat.inputs:
+  - type: container
+    paths:
+      - '/var/lib/docker/containers/*/*.log'
+
+# filebeat.modules:
+# - module: system
+#   syslog:
+#     enabled: true
+#   auth:
+#     enabled: true
+# - module: auditd
+#   log:
+#     enabled: true
+
+filebeat.config.modules:
+  path: "/usr/share/filebeat/modules.d/*.yml"
+  reload.enabled: false
+
+filebeat.autodiscover:
+  providers:
+    - type: docker
+      hints.enabled: true
+
+processors:
+  - add_docker_metadata:
+      host: "unix:///var/run/docker.sock"
+
+  - decode_json_fields:
+      fields: ["message"]
+      target: "json"
+      overwrite_keys: true
+
+output.logstash:
+  hosts: ["logstash:5046"]
+
+logging.json: true
+logging.metrics.enabled: false
+
+# xpack.monitoring:
+#   enabled: true
+#   elasticsearch:
+#     hosts: ["es-hot:9200"]
