@@ -1,0 +1,12 @@
+---
+elk_stack_version: "7.14.0"
+filebeat_version: "{{ elk_stack_version }}"
+kibana_version: "{{ elk_stack_version }}"
+logstash_version: "{{ elk_stack_version }}"
+kibana_elasticsearch_url: ["http://{{ hostvars['el-instance']['ansible_facts']['default_ipv4']['address'] }}:9200/"]
+filebeat_elasticsearch_url: ["http://{{ hostvars['el-instance']['ansible_facts']['default_ipv4']['address'] }}:9200/"]
+filebeat_kibana_url:  "http://{{ hostvars['k-instance']['ansible_facts']['default_ipv4']['address'] }}:5601"
+filebeat_logstash_url: "{{ hostvars['el-instance']['ansible_facts']['default_ipv4']['address'] }}:5044"
+filebeat_output_destination: "logstash"
+logstash_elasticsearch_url: ["http://{{ hostvars['el-instance']['ansible_facts']['default_ipv4']['address'] }}:9200/"]
+filebeat_setup_kibana: false
