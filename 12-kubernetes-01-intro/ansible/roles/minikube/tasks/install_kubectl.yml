@@ -1,0 +1,56 @@
+---
+- name: install yum-utils
+  package:
+    name: yum-utils
+    state: present
+
+- name: Add yum repository for stable version
+  get_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+
+- name: Install docker and its dependecies
+  package: 
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+  vars:
+    packages:
+    - docker-ce 
+    - docker-ce-cli 
+    - containerd.io
+    - docker-compose-plugin
+
+- name: download kubectl binary
+  become: true
+  get_url:
+    url: https://dl.k8s.io/release/v1.24.0/bin/linux/amd64/kubectl
+    dest: /usr/local/bin/kubectl
+
+- name: change file permission
+  become: true
+  file:
+    path: /usr/local/bin/kubectl
+    mode: 755
+
+
+      #- name: install kubectl
+  # become: true
+  
+
+
+
+# - name: get latest version
+#  uri:
+#    url: https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/linux/amd64/kubectl
+#    dest: /usr/local/bin/kubectl
+#    method: GET
+
+#- name: change rights
+#  file: 
+#    path: /usr/local/bin/kubectl
+#    mode: 644
+#
+#- name: check version
+#  command: kubectl version --client
+#  register: kubectl_version

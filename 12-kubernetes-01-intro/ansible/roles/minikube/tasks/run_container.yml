@@ -1,0 +1,8 @@
+---
+- name: run container with 3 replicas
+  command: kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4 --replicas 3
+  run_once: true
+
+- name: create service
+  command: kubectl expose deployment hello-node --type=LoadBalancer --port=8080
+  run_once: true

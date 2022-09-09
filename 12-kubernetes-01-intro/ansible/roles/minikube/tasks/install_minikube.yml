@@ -1,0 +1,39 @@
+---
+- name: install epel release
+  yum:
+    name: epel-release
+    state: present
+
+- name: create folders
+  file:
+    path: /usr/local/bin/
+    state: directory
+    recurse: yes
+
+- name: download minikube
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    dest: /tmp/minikube
+    mode: +x
+
+- name: check if docker is enabled
+  command: systemctl status docker
+  ignore_errors: true
+  register: docker_status
+
+- name: enable docker
+  command: sudo systemctl start docker
+  changed_when: "'active (running)' not in docker_status.stdout"
+
+- name: install minikube
+  become: yes
+  command: install /tmp/minikube /usr/local/bin/  
+
+- name: start minikube
+  command: minikube start
+
+- name: add dashboard
+  command: minikube addons enable dashboard
+    
+- name: enable ingress
+  command: minikube addons enable ingress 

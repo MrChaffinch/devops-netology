@@ -1,0 +1,4 @@
+---
+- include_tasks: install_kubectl.yml
+- include_tasks: install_minikube.yml
+- include_tasks: run_container.yml
