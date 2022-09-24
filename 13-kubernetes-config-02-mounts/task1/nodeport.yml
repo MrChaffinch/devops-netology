@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-backend
+spec:
+  selector:
+    app: frontend-backend
+  type: NodePort # соединение по внешнему IP
+  ports:
+    - name: frontend
+      protocol: TCP
+      port: 80
+      nodePort: 32100
+    - name: backend
+      protocol: TCP
+      port: 9000
+      nodePort: 32000

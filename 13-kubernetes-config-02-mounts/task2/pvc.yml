@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-prod
+  namespace: prod
+spec:
+  resources:
+    requests:
+      storage: 1G
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany

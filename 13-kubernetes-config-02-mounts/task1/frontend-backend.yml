@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-backend
+  namespace: test
+spec:
+  selector:
+    matchLabels:
+      app: frontend-backend
+  template:
+    metadata:
+      labels:
+        app: frontend-backend
+    spec:
+      containers:
+      - name: frontend
+        image: mbagirov/netology-13-front
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        volumeMounts:
+        - name: front-back
+          mountPath: "/static/"
+        ports:
+        - containerPort: 80
+        env: 
+        - name: BASE_URL
+          value: http://localhost:9000
+      - name: backend
+        image: mbagirov/netology-13-backend
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        volumeMounts:
+        - name: front-back
+          mountPath: "/static/"
+        ports:
+        - containerPort: 9000
+        env:
+        - name: DATABASE_URL
+          value: postgres://postgres:postgres@postgres:5432/news
+      volumes:
+      - name: front-back
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-backend
+  namespace: default
+spec:
+  selector:
+    app: frontend-backend
+  ports:
+    - name: frontend
+      protocol: TCP
+      port: 8080
+      targetPort: 80
+    - name: backend
+      protocol: TCP
+      port: 9000
+      targetPort: 9000

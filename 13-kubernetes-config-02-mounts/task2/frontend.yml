@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: prod
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: mbagirov/netology-13-front
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        env: 
+        - name: BASE_URL
+          value: http://localhost:9000
+        volumeMounts:
+        - mountPath: "/static/pv"
+          name: pv-prod
+      volumes: 
+        - name: pv-prod
+          persistentVolumeClaim:
+            claimName: pvc-prod
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: prod
+spec:
+  selector:
+    app: frontend
+  ports:
+    - name: frontend
+      protocol: TCP
+      port: 8080
+      targetPort: 80
