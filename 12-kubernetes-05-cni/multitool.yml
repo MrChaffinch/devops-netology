@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multitool-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: multitool-2
+  template:
+    metadata:
+      labels:
+        app: multitool-2
+    spec:
+      containers:
+      - name: multitool 
+        image: praqma/network-multitool
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
