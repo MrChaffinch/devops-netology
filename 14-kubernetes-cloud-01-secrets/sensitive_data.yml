@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sensitive-secret
+type: Opaque
+data:
+    USER_NAME: dXNlcm5hbWUK 
+    PASSWORD: cGEkJHcwcmQK 
