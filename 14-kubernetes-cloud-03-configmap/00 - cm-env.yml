@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-env
+data:
+  phrase1: Hello
+  phrase2: World
